@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management App | Anshul Jangra</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Anshul<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle">🌙</button>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Student Management App</h1>
+        <p>Manage student entries with add, edit, delete, and save to local storage.</p>
+    </section>
+
+    <section class="page">
+        <div class="section-header">
+            <h2>Application Demo</h2>
+            <p class="section-subtitle">A simple interactive student management system.</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-form-section" style="padding: 30px;">
+                <h3>Add New Student</h3>
+                <form id="studentForm">
+                    <div class="form-group">
+                        <label for="studentName">Name</label>
+                        <input type="text" id="studentName" placeholder="Student name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <input type="email" id="studentEmail" placeholder="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentCourse">Course</label>
+                        <input type="text" id="studentCourse" placeholder="Course name" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Add Student</button>
+                    <div id="studentMessage" class="form-message"></div>
+                </form>
+            </div>
+
+            <div class="contact-info"
+                style="padding: 30px; background: var(--light-bg); border-radius: 12px; border: 1px solid var(--border-color);">
+                <h3>Student Records</h3>
+                <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-color);">
+                                Name</th>
+                            <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-color);">
+                                Email</th>
+                            <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-color);">
+                                Course</th>
+                            <th style="text-align:left; padding: 12px; border-bottom: 1px solid var(--border-color);">
+                                Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsList"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Anshul Jangra</h3>
+                <p>Interactive Demo | Web Developer</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Me</h4>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Anshul Jangra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const studentForm = document.getElementById('studentForm');
+        const studentsList = document.getElementById('studentsList');
+        const studentMessage = document.getElementById('studentMessage');
+
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+
+        function saveStudents() {
+            localStorage.setItem('students', JSON.stringify(students));
+        }
+
+        function renderStudents() {
+            studentsList.innerHTML = '';
+            if (students.length === 0) {
+                studentsList.innerHTML = '<tr><td colspan="4" style="padding: 20px; color: var(--text-secondary);">No students added yet.</td></tr>';
+                return;
+            }
+
+            students.forEach((student, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">${student.name}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">${student.email}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">${student.course}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">
+                        <button class="btn btn-secondary btn-small" onclick="deleteStudent(${index})">Delete</button>
+                    </td>`;
+                studentsList.appendChild(row);
+            });
+        }
+
+        function deleteStudent(index) {
+            students.splice(index, 1);
+            saveStudents();
+            renderStudents();
+            showMessage('Student removed successfully.', '#f59e0b');
+        }
+
+        function showMessage(text, color) {
+            studentMessage.textContent = text;
+            studentMessage.style.color = color;
+            setTimeout(() => {
+                studentMessage.textContent = '';
+            }, 3000);
+        }
+
+        studentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value.trim();
+            const email = document.getElementById('studentEmail').value.trim();
+            const course = document.getElementById('studentCourse').value.trim();
+
+            if (!name || !email || !course) {
+                showMessage('Please fill in all fields.', '#ef4444');
+                return;
+            }
+
+            students.push({ name, email, course });
+            saveStudents();
+            renderStudents();
+            studentForm.reset();
+            showMessage('Student added successfully!', '#38bdf8');
+        });
+
+        renderStudents();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

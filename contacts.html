@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Anshul Jangra</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">Anshul<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle">🌙</button>
+        </nav>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <h1>Get In Touch</h1>
+        <p>Let's discuss your project or opportunity</p>
+    </section>
+
+    <!-- CONTACT CONTENT -->
+    <section class="page">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p class="section-intro">Feel free to reach out to me through any of the following channels. I'll get
+                    back to you as soon as possible.</p>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Email</h3>
+                            <p>jangraansul4535@gmail.com</p>
+                            <a href="mailto:jangraansul4535@gmail.com" class="btn btn-secondary btn-small">Send
+                                Email</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Phone</h3>
+                            <p>+91 9253605758</p>
+                            <a href="tel:+919253605758" class="btn btn-secondary btn-small">Call Now</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>WhatsApp</h3>
+                            <p>Chat with me directly on WhatsApp</p>
+                            <a href="https://wa.me/919253605758" target="_blank"
+                                class="btn btn-secondary btn-small">Send Message</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Location</h3>
+                            <p>Rohtak, Haryana, India</p>
+                            <a href="#" class="btn btn-secondary btn-small">View Map</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-linkedin"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>LinkedIn</h3>
+                            <p>Connect with me on LinkedIn</p>
+                            <a href="#" class="btn btn-secondary btn-small">Visit Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-github"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>GitHub</h3>
+                            <p>Check out my projects and code</p>
+                            <a href="#" class="btn btn-secondary btn-small">View Repository</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-twitter"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Twitter</h3>
+                            <p>Follow me for tech updates</p>
+                            <a href="#" class="btn btn-secondary btn-small">Follow Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="availability-section">
+                    <h3>Availability</h3>
+                    <div class="availability-grid">
+                        <div class="availability-item">
+                            <strong>Response Time:</strong>
+                            <p>Within 24 hours</p>
+                        </div>
+                        <div class="availability-item">
+                            <strong>Working Days:</strong>
+                            <p>Monday - Friday</p>
+                        </div>
+                        <div class="availability-item">
+                            <strong>Time Zone:</strong>
+                            <p>IST (UTC +5:30)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form-section">
+                <h2>Send Me a Message</h2>
+                <p class="section-intro">Have a question or want to work together? Fill out the form below and I'll get
+                    back to you soon.</p>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                        <small class="error-message" id="nameError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        <small class="error-message" id="emailError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 XXXXXXXXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="project">Project Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="freelance">Freelance Work</option>
+                            <option value="mentoring">Mentoring</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <small class="error-message" id="subjectError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required
+                            placeholder="Tell me about your project or inquiry..." rows="6"></textarea>
+                        <small class="error-message" id="messageError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span>I agree to the terms and conditions</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <h3>What services do you offer?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>I offer web design, full-stack development, responsive design, and UI/UX implementation. I
+                            can help with everything from simple websites to complex web applications.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <h3>What's your typical project timeline?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Project timelines vary based on complexity. A simple website might take 2-3 weeks, while
+                            complex applications could take 2-3 months. I'll provide a detailed timeline after
+                            understanding your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <h3>Do you offer maintenance and support?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Yes, I provide post-launch maintenance, bug fixes, updates, and ongoing support. We can
+                            discuss support packages based on your needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <h3>What's your pricing structure?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Pricing depends on project scope and complexity. I offer flexible options including
+                            fixed-price projects, hourly rates, and retainer agreements. Contact me for a custom quote.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <h3>How do you ensure project quality?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>I follow best practices including code reviews, testing, optimization, and regular client
+                            updates. Quality is my top priority for every project.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <h3>Can you work with existing projects?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Absolutely! I can help with improving, refactoring, or extending existing projects. I work
+                            with codebases written in various technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Anshul Jangra</h3>
+                <p>Full Stack Web Developer | BCA Student</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Me</h4>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Anshul Jangra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

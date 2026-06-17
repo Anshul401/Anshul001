@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App | Anshul Jangra</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Anshul<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle">🌙</button>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Weather App Demo</h1>
+        <p>Search for a city and view current weather conditions.</p>
+    </section>
+
+    <section class="page">
+        <div class="section-header">
+            <h2>Check the Weather</h2>
+            <p class="section-subtitle">Live API demo using OpenWeatherMap.</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-form-section" style="padding: 30px;">
+                <form id="weatherForm">
+                    <div class="form-group">
+                        <label for="city">City Name</label>
+                        <input type="text" id="city" placeholder="Enter a city" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Get Weather</button>
+                    <div id="weatherMessage" class="form-message"></div>
+                </form>
+            </div>
+
+            <div class="contact-info"
+                style="padding: 30px; background: var(--light-bg); border-radius: 12px; border: 1px solid var(--border-color);">
+                <h3>Weather Result</h3>
+                <div id="weatherResult" style="margin-top: 20px; color: var(--text-secondary);"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Anshul Jangra</h3>
+                <p>Weather App Demo | Web Developer</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Me</h4>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Anshul Jangra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const weatherForm = document.getElementById('weatherForm');
+        const weatherResult = document.getElementById('weatherResult');
+        const weatherMessage = document.getElementById('weatherMessage');
+
+        async function loadWeather(city) {
+            const apiKey = 'YOUR_API_KEY';
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+                if (!response.ok) throw new Error('City not found');
+                const data = await response.json();
+                renderWeather(data);
+            } catch (error) {
+                weatherMessage.textContent = error.message;
+                weatherMessage.style.color = '#ef4444';
+                weatherResult.innerHTML = '';
+            }
+        }
+
+        function renderWeather(data) {
+            weatherMessage.textContent = '';
+            weatherResult.innerHTML = `
+                <div style="padding: 20px; background: rgba(56,189,248,0.1); border-radius: 12px;">
+                    <h3 style="color: var(--primary-color);">${data.name}, ${data.sys.country}</h3>
+                    <p style="font-size: 22px; margin: 10px 0;"><strong>${data.main.temp}°C</strong> - ${data.weather[0].description}</p>
+                    <p style="margin: 8px 0;">Humidity: ${data.main.humidity}%</p>
+                    <p style="margin: 8px 0;">Wind Speed: ${data.wind.speed} m/s</p>
+                </div>
+            `;
+        }
+
+        weatherForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const city = document.getElementById('city').value.trim();
+            if (!city) {
+                weatherMessage.textContent = 'Please enter a city name.';
+                weatherMessage.style.color = '#ef4444';
+                return;
+            }
+            weatherMessage.textContent = 'Loading weather...';
+            weatherMessage.style.color = '#38bdf8';
+            loadWeather(city);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Examples | Anshul Jangra</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Anshul<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle">🌙</button>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Interactive Project Examples</h1>
+        <p>Open the demo pages and explore the actual project code.</p>
+    </section>
+
+    <section class="page">
+        <div class="section-header">
+            <h2>Live Project Demos</h2>
+            <p class="section-subtitle">Three working examples built with HTML, CSS, and JavaScript</p>
+        </div>
+
+        <div class="demo-grid">
+            <div class="demo-card">
+                <div class="demo-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Portfolio Website</h3>
+                <p>A complete portfolio demo using responsive layout, navigation, and hero design.</p>
+                <div class="tech-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JS</span>
+                </div>
+                <div class="demo-actions">
+                    <a href="portfolio-project.html" class="btn btn-primary">Open Demo</a>
+                    <a href="portfolio-project.html" class="btn btn-secondary">View Code</a>
+                </div>
+            </div>
+            <div class="demo-card">
+                <div class="demo-icon"><i class="fas fa-users"></i></div>
+                <h3>Student Management</h3>
+                <p>An interactive student management app with add, edit, delete, and local storage support.</p>
+                <div class="tech-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JS</span>
+                </div>
+                <div class="demo-actions">
+                    <a href="student-management.html" class="btn btn-primary">Open Demo</a>
+                    <a href="student-management.html" class="btn btn-secondary">View Code</a>
+                </div>
+            </div>
+            <div class="demo-card">
+                <div class="demo-icon"><i class="fas fa-cloud-sun"></i></div>
+                <h3>Weather App</h3>
+                <p>A weather lookup app that fetches live data and displays current conditions.</p>
+                <div class="tech-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JS</span>
+                </div>
+                <div class="demo-actions">
+                    <a href="weather-app.html" class="btn btn-primary">Open Demo</a>
+                    <a href="weather-app.html" class="btn btn-secondary">View Code</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 80px;">
+            <h2>Project Code Samples</h2>
+            <p class="section-subtitle">Review the HTML, CSS, and JavaScript behind each demo.</p>
+        </div>
+
+        <div class="code-block">
+            <h3>Portfolio Website - HTML Snippet</h3>
+            <pre><code>&lt;header&gt;
+  &lt;nav&gt;
+    &lt;div class="logo"&gt;Anshul.&lt;/div&gt;
+    &lt;ul class="nav-links"&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="projects.html"&gt;Projects&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="contacts.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+        </div>
+
+        <div class="code-block">
+            <h3>Student Management - JavaScript Snippet</h3>
+            <pre><code>const studentForm = document.getElementById('studentForm');
+const studentsList = document.getElementById('studentsList');
+let students = JSON.parse(localStorage.getItem('students')) || [];
+
+function renderStudents() {
+  studentsList.innerHTML = '';
+  students.forEach((student, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      &lt;td&gt;${student.name}&lt;/td&gt;
+      &lt;td&gt;${student.email}&lt;/td&gt;
+      &lt;td&gt;${student.course}&lt;/td&gt;
+      &lt;td&gt;&lt;button onclick="deleteStudent(${index})"&gt;Delete&lt;/button&gt;&lt;/td&gt;`;
+    studentsList.appendChild(row);
+  });
+}
+</code></pre>
+        </div>
+
+        <div class="code-block">
+            <h3>Weather App - JS Fetch Snippet</h3>
+            <pre><code>async function loadWeather(city) {
+  const apiKey = 'YOUR_API_KEY';
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+  const data = await response.json();
+  renderWeather(data);
+}
+</code></pre>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Anshul Jangra</h3>
+                <p>Full Stack Web Developer | BCA Student</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Me</h4>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Anshul Jangra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
