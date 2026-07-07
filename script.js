@@ -19,6 +19,26 @@ themeToggle.addEventListener('click', () => {
     themeToggle.textContent = theme === 'light' ? '☀️' : '🌙';
 });
 
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Change icon based on state
+        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '☰';
+        });
+    });
+}
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -164,16 +184,16 @@ style.textContent = `
       transform: translateY(0);
     }
   }
+
+  /* Hamburger menu animation */
+  .mobile-menu-btn {
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-btn:active {
+    transform: scale(0.95);
+  }
 `;
 document.head.appendChild(style);
-
-// Mobile menu toggle (if you add mobile menu in future)
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-if (mobileMenuBtn) {
-    const navLinks = document.querySelector('.nav-links');
-    mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-}
 
 console.log('Portfolio script loaded successfully!');
