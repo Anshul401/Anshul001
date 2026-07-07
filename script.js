@@ -1,3 +1,6 @@
+// Initialize EmailJS
+emailjs.init("nEGOQiqBEf4LeUGDU03H1");
+
 // Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
@@ -104,23 +107,27 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Form validation for contact page
+// ===================== CONTACT FORM WITH EMAILJS =====================
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value.trim();
         const terms = document.getElementById('terms').checked;
         const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
 
+        // Clear previous messages
         let isValid = true;
         document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
         formMessage.textContent = '';
 
+        // Validation
         if (!name) {
             document.getElementById('nameError').textContent = 'Name is required';
             isValid = false;
@@ -142,22 +149,65 @@ if (contactForm) {
         }
 
         if (!terms) {
+            document.getElementById('termsError').textContent = 'Please agree to the terms';
             isValid = false;
-            alert('Please agree to the terms and conditions.');
         }
 
         if (!isValid) {
             return;
         }
 
-        formMessage.textContent = 'Thank you! Your message has been sent successfully. I will get back to you soon.';
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formMessage.textContent = 'Sending your message...';
         formMessage.style.color = '#38bdf8';
-        formMessage.style.marginTop = '20px';
-        contactForm.reset();
 
-        setTimeout(() => {
-            formMessage.textContent = '';
-        }, 5000);
+        try {
+            // Send email using EmailJS
+            const response = await emailjs.send(
+                'service_yg1u1zg',
+                'template_ook7z5p',
+                {
+                    from_name: name,
+                    from_email: email,
+                    phone: phone || 'Not provided',
+                    subject: subject,
+                    message: message,
+                    to_email: 'jangraansul4535@gmail.com'
+                }
+            );
+
+            if (response.status === 200) {
+                // Success message
+                formMessage.textContent = '✅ Thank you! Your message has been sent successfully. I will get back to you soon.';
+                formMessage.style.color = '#10b981';
+                formMessage.style.marginTop = '20px';
+                formMessage.style.fontWeight = '600';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Log success
+                console.log('Email sent successfully:', response);
+
+                // Clear message after 5 seconds
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                }, 5000);
+            }
+        } catch (error) {
+            // Error message
+            console.error('Error sending email:', error);
+            formMessage.textContent = '❌ Oops! There was an error sending your message. Please try again or contact me directly.';
+            formMessage.style.color = '#ef4444';
+            formMessage.style.marginTop = '20px';
+            formMessage.style.fontWeight = '600';
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
     });
 }
 
@@ -193,7 +243,29 @@ style.textContent = `
   .mobile-menu-btn:active {
     transform: scale(0.95);
   }
+
+  /* Form button loading state */
+  .btn-large:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* Form message animation */
+  #formMessage {
+    animation: slideIn 0.4s ease;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 document.head.appendChild(style);
 
-console.log('Portfolio script loaded successfully!');
+console.log('Portfolio script loaded successfully with EmailJS!');
