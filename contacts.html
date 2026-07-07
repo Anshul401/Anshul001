@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
                 <li><a href="contacts.html">Contact</a></li>
             </ul>
             <button id="theme-toggle">🌙</button>
+            <button class="mobile-menu-btn">☰</button>
         </nav>
     </header>
 
@@ -84,7 +86,8 @@
                         <div class="method-content">
                             <h3>Location</h3>
                             <p>Rohtak, Haryana, India</p>
-                            <a href="#" class="btn btn-secondary btn-small">View Map</a>
+                            <a href="https://maps.google.com/?q=Rohtak,Haryana,India" target="_blank"
+                                class="btn btn-secondary btn-small">View Map</a>
                         </div>
                     </div>
 
@@ -95,7 +98,7 @@
                         <div class="method-content">
                             <h3>LinkedIn</h3>
                             <p>Connect with me on LinkedIn</p>
-                            <a href="#" class="btn btn-secondary btn-small">Visit Profile</a>
+                            <a href="https://linkedin.com" target="_blank" class="btn btn-secondary btn-small">Visit Profile</a>
                         </div>
                     </div>
 
@@ -106,7 +109,7 @@
                         <div class="method-content">
                             <h3>GitHub</h3>
                             <p>Check out my projects and code</p>
-                            <a href="#" class="btn btn-secondary btn-small">View Repository</a>
+                            <a href="https://github.com/Anshul401" target="_blank" class="btn btn-secondary btn-small">View Repository</a>
                         </div>
                     </div>
 
@@ -117,7 +120,7 @@
                         <div class="method-content">
                             <h3>Twitter</h3>
                             <p>Follow me for tech updates</p>
-                            <a href="#" class="btn btn-secondary btn-small">Follow Now</a>
+                            <a href="https://twitter.com" target="_blank" class="btn btn-secondary btn-small">Follow Now</a>
                         </div>
                     </div>
                 </div>
@@ -169,11 +172,11 @@
                         <label for="subject">Subject *</label>
                         <select id="subject" name="subject" required>
                             <option value="">Select a subject</option>
-                            <option value="project">Project Inquiry</option>
-                            <option value="collaboration">Collaboration</option>
-                            <option value="freelance">Freelance Work</option>
-                            <option value="mentoring">Mentoring</option>
-                            <option value="other">Other</option>
+                            <option value="Project Inquiry">Project Inquiry</option>
+                            <option value="Collaboration">Collaboration</option>
+                            <option value="Freelance Work">Freelance Work</option>
+                            <option value="Mentoring">Mentoring</option>
+                            <option value="Other">Other</option>
                         </select>
                         <small class="error-message" id="subjectError"></small>
                     </div>
@@ -190,9 +193,10 @@
                             <input type="checkbox" id="terms" name="terms" required>
                             <span>I agree to the terms and conditions</span>
                         </label>
+                        <small class="error-message" id="termsError"></small>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                    <button type="submit" class="btn btn-primary btn-large" id="submitBtn">Send Message</button>
                     <div class="form-message" id="formMessage"></div>
                 </form>
             </div>
@@ -294,10 +298,10 @@
             <div class="footer-section">
                 <h4>Connect With Me</h4>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-envelope"></i></a>
+                    <a href="https://github.com/Anshul401" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:jangraansul4535@gmail.com"><i class="fab fa-envelope"></i></a>
                 </div>
             </div>
         </div>
